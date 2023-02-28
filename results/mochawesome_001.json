@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-02-28T16:36:26.728Z",
+    "end": "2023-02-28T16:36:26.951Z",
+    "duration": 223,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2a4430c5-dc76-4412-8b7b-94b4b67f25bf",
+      "title": "",
+      "fullFile": "cypress/api-test/post/getRequest.cy.js",
+      "file": "cypress/api-test/post/getRequest.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c075e8f6-4802-4e7f-9939-f2d49951785f",
+          "title": "Test get request",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should be able to send GET request and verify response",
+              "fullTitle": "Test get request should be able to send GET request and verify response",
+              "timedOut": null,
+              "duration": 196,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//let url = Cypress.env('BASE_URL') + '/posts'\ncy.request({\n  method: 'GET',\n  url: \"https://jsonplaceholder.typicode.com/posts\"\n}).then(response => {\n  // get\n  // cy.log(JSON.stringify(response.body))\n  // cy.log(JSON.stringify(response.status))\n  //------//\n  // verify use Chai assertion library\n  //expect(response.status).to.equal(200)\n  //expect(response.body.length).to.equal(100)\n  //-----//\n  // destructrure\n  let {\n    status,\n    body\n  } = response;\n  expect(status).to.equal(200);\n  expect(body.length).to.equal(100);\n  // Get random element arry object\n  let randomIndex = Math.random() * body.length;\n  let roundIndex = Math.floor(randomIndex);\n  let randomObject = body[roundIndex];\n  //call veriy function\n  verifyNotEmpty('userID', randomObject);\n  verifyNotEmpty('id', randomObject);\n  verifyNotEmpty('title', randomObject);\n  verifyNotEmpty('body', randomObject);\n});",
+              "err": {},
+              "uuid": "8a2e4191-ea60-4e5c-845f-17e316633c76",
+              "parentUUID": "c075e8f6-4802-4e7f-9939-f2d49951785f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8a2e4191-ea60-4e5c-845f-17e316633c76"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 196,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

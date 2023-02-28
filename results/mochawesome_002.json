@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-02-28T16:36:32.398Z",
+    "end": "2023-02-28T16:36:32.555Z",
+    "duration": 157,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "35a78acc-67cc-4f25-ba34-eb1131bf42d3",
+      "title": "",
+      "fullFile": "cypress/api-test/post/handleRequest.cy.js",
+      "file": "cypress/api-test/post/handleRequest.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "90b8fcae-c6f7-4746-8714-35158964d5c9",
+          "title": "Handling async request in Cypress",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should be able to await until a request resolved",
+              "fullTitle": "Handling async request in Cypress Should be able to await until a request resolved",
+              "timedOut": null,
+              "duration": 102,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let header = {\n  'Content-type': 'application/json; charset=UTF-8'\n};\nlet url = Cypress.env('BASE_URL') + '/posts';\ncy.request({\n  method: 'POST',\n  url: url,\n  header: header,\n  body: {\n    title: 'foo',\n    body: 'bar',\n    userId: 1\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  const postID = res.body.id;\n  cy.request({\n    method: 'PUT',\n    header: header,\n    url: Cypress.env('BASE_URL') + '/posts' + '/' + (postID - 1),\n    body: {\n      title: 'fooTest',\n      body: 'barTest',\n      userId: 1\n    }\n  }).then(res => {\n    cy.log(JSON.stringify(res));\n    cy.request({\n      method: 'DELETE',\n      url: Cypress.env('BASE_URL') + '/posts' + '/' + (postID - 1)\n    }).then(res => {\n      cy.log(JSON.stringify(res));\n    });\n  });\n});",
+              "err": {},
+              "uuid": "aa64084d-3e5d-46bd-88a9-8409226cfcf3",
+              "parentUUID": "90b8fcae-c6f7-4746-8714-35158964d5c9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "aa64084d-3e5d-46bd-88a9-8409226cfcf3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 102,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

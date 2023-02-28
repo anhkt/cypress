@@ -1,0 +1,29 @@
+{
+  "name": "crypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^12.2.0"
+  },
+  "devDependencies": {
+    "cypress-localstorage-commands": "^2.2.2",
+    "cypress-xpath": "^2.0.1",
+    "dotenv": "^16.0.3",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.2",
+    "mochawesome-report-generator": "^6.2.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=dev cypress open",
+    "dev": "NODE_ENV=dev cypress open",
+    "prod": "NODE_ENV=prod cypress open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mocha-reporter": "cypress run --reporter mochawesome --reporter-options reportDir=\"results\",overwrite=false,html=false,json=true",
+    "mocha-merge": "mochawesome-merge \"results/*.json\" > mochawesome.json",
+    "mocha-build": "marge mochawesome.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
