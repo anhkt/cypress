@@ -21,7 +21,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "mocha-reporter": "cypress run --reporter mochawesome --reporter-options reportDir=\"results\",overwrite=false,html=false,json=true",
     "mocha-merge": "mochawesome-merge \"results/*.json\" > mochawesome.json",
-    "mocha-build": "marge mochawesome.json"
+    "mocha-build": "marge mochawesome.json",
+    "cy:report": "npm run mocha-reporter && npm run mocha-merge && npm run mocha-build"
   },
   "keywords": [],
   "author": "",
